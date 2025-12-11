@@ -3,29 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Life Phases: A 2D Story</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Pixel Clicker</title>
+    <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
+
+    <header>
+        <h1>👾 Pixel Clicker 👾</h1>
+    </header>
+
     <div id="game-container">
-        <div id="player"></div>
-        <div id="phase-1-orb" class="phase-orb" data-phase="1">
-            <span class="orb-label">PHASE 1</span>
-        </div>
-        <div id="phase-2-orb" class="phase-orb" data-phase="2">
-            <span class="orb-label">PHASE 2</span>
-        </div>
-        <div id="phase-3-orb" class="phase-orb" data-phase="3">
-            <span class="orb-label">PHASE 3</span>
-        </div>
         
-        <div id="prompt" class="hidden">
-            [Press **E** to talk and read the phase orb]
+        <div id="stats-panel">
+            <h2>Current Stats</h2>
+            <p>Pixels: <span id="pixel-count">0</span></p>
+            <p>Per Second: <span id="pps-count">0.0</span> PPS</p>
+            <hr>
+            <button id="save-button" class="utility-button">💾 Save Game</button>
+            <button id="reset-button" class="utility-button">🗑️ Reset Game</button>
         </div>
-        
-        <div id="dialogue-box" class="hidden">
-            <p id="dialogue-text"></p>
-            <button id="close-dialogue">Close</button>
+
+        <div id="clicker-area">
+            <img src="avatar_image.png" alt="Clickable Avatar" id="avatar-clicker">
+            </div>
+
+        <div id="store-panel">
+            <h2>Upgrades & Buildings</h2>
+            <div id="upgrade-list">
+                </div>
         </div>
     </div>
 
