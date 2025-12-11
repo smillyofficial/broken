@@ -1,118 +1,129 @@
 body {
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #0d0101; /* Very dark background for atmosphere */
-    overflow: hidden;
     font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #f1c40f;
+    text-shadow: 2px 2px #000;
 }
 
 #game-container {
-    position: relative;
-    width: 800px;
-    height: 450px;
-    border: 3px solid #6a0000;
-    background: 
-        /* Crimson Petals (simulated with repeating radial gradients) */
-        radial-gradient(circle at 10% 20%, rgba(139, 0, 0, 0.4) 1px, transparent 1px),
-        radial-gradient(circle at 70% 80%, rgba(139, 0, 0, 0.4) 1px, transparent 1px),
-        radial-gradient(circle at 40% 50%, rgba(139, 0, 0, 0.4) 1px, transparent 1px),
-        /* Thundering Sky (dark stormy gradient) */
-        linear-gradient(to top, #1c1c1c, #3a3a3a);
-    background-size: 500px 500px, 500px 500px, 500px 500px, 100% 100%;
+    max-width: 1000px;
+    margin: 20px auto;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
 }
 
-/* --- Player Styling (Similar to the white box in your image) --- */
-#player {
-    position: absolute;
-    width: 30px;
-    height: 50px;
-    background-color: transparent;
-    border: 4px solid black;
-    bottom: 20px; /* Starting position at the bottom */
-    left: 385px;
-    transition: left 0.1s linear, top 0.1s linear; /* Smooth movement */
-    z-index: 10;
+/* --- Stats and Store Panel Styles --- */
+#stats-panel, #store-panel {
+    flex: 1;
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    min-width: 250px;
 }
 
-/* --- Phase Orb Styling --- */
-.phase-orb {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: #8b0000; /* Dark Red */
-    border: 2px solid #ff4500;
+#stats-panel h2, #store-panel h2 {
+    border-bottom: 2px solid #555;
+    padding-bottom: 5px;
+    margin-top: 0;
+}
+
+#pixel-count {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #ff5733; /* A vibrant red/orange */
+}
+
+#pps-count {
+    font-size: 1.2em;
+    color: #aaa;
+}
+
+/* --- Utility Buttons (Save/Reset) --- */
+.utility-button {
+    padding: 8px 15px;
+    margin: 5px;
+    background-color: #555;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.utility-button:hover {
+    background-color: #777;
+}
+
+
+/* --- Clicker Area Styles --- */
+#clicker-area {
+    flex: 2;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    font-weight: bold;
+    padding: 20px;
+}
+
+#avatar-clicker {
+    width: 300px; 
+    height: 300px;
+    object-fit: contain;
     cursor: pointer;
-    text-align: center;
-    box-shadow: 0 0 15px #ff4500; /* Glow effect */
+    border: 5px solid #ff5733;
+    border-radius: 50%;
+    transition: transform 0.05s ease-out;
 }
 
-#phase-1-orb { top: 150px; left: 100px; }
-#phase-2-orb { top: 100px; left: 600px; }
-#phase-3-orb { top: 300px; left: 400px; }
-
-.orb-label {
-    font-size: 14px;
-    pointer-events: none; /* Allows click-through to the orb itself */
+#avatar-clicker:active {
+    transform: scale(0.95); /* Shrink when clicked (Animation) */
 }
 
-/* --- Dialogue/Prompt Styling --- */
-#prompt {
-    position: absolute;
-    bottom: 100px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 5px 10px;
+
+/* --- Upgrade/Building Styles --- */
+.building {
+    background-color: #444;
+    margin-bottom: 10px;
+    padding: 10px;
     border-radius: 5px;
-    font-size: 14px;
-    z-index: 20;
-    transition: opacity 0.2s;
-}
-
-.hidden {
-    display: none;
-    opacity: 0;
-}
-
-#dialogue-box {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    min-height: 100px;
-    background-color: rgba(0, 0, 0, 0.95);
-    color: white;
-    padding: 15px;
-    box-sizing: border-box;
-    border-top: 5px solid #8b0000;
-    z-index: 30;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 }
 
-#dialogue-text {
-    margin: 0;
-    font-size: 16px;
-    line-height: 1.5;
+.building-info {
+    text-align: left;
 }
 
-#close-dialogue {
-    align-self: flex-end;
-    padding: 5px 15px;
-    background-color: #8b0000;
+.building-count {
+    font-weight: bold;
+    color: #f1c40f;
+    font-size: 1.2em;
+}
+
+.buy-button {
+    padding: 10px 15px;
+    background-color: #27ae60; /* Green for purchase */
     color: white;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.buy-button:hover:not(:disabled) {
+    background-color: #2ecc71;
+}
+
+.buy-button:disabled {
+    background-color: #555;
+    cursor: not-allowed;
+    color: #bbb;
 }
