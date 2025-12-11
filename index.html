@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Life Phases: A 2D Story</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="player"></div>
+        <div id="phase-1-orb" class="phase-orb" data-phase="1">
+            <span class="orb-label">PHASE 1</span>
+        </div>
+        <div id="phase-2-orb" class="phase-orb" data-phase="2">
+            <span class="orb-label">PHASE 2</span>
+        </div>
+        <div id="phase-3-orb" class="phase-orb" data-phase="3">
+            <span class="orb-label">PHASE 3</span>
+        </div>
+        
+        <div id="prompt" class="hidden">
+            [Press **E** to talk and read the phase orb]
+        </div>
+        
+        <div id="dialogue-box" class="hidden">
+            <p id="dialogue-text"></p>
+            <button id="close-dialogue">Close</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
